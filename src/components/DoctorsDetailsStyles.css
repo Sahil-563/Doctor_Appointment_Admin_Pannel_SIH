@@ -1,0 +1,42 @@
+
+.cardContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.card {
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.card-header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.row label {
+    display: inline-block;
+    width: 120px;
+    font-weight: bold;
+}
+
+.row span {
+    display: inline-block;
+    margin-left: 10px;
+}

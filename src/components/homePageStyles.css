@@ -1,0 +1,12 @@
+.navbar {
+    width: 98%;
+    margin: 20px  10px;
+    display: flex;
+    justify-content: space-around;
+    overflow-x: hidden;
+}
+
+
+.nav-links>li {
+    list-style: none;
+}
