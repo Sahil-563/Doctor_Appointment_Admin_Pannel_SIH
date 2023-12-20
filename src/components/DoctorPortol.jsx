@@ -1,19 +1,42 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 import toast from 'react-hot-toast';
+import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 import './signInUpStyles.css';
 import heroimg from '../assets/hero_img.jpg'
 
-function Login(props) {
+function DoctorPortol() {
+    const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get('https://digitilize-pragun.onrender.com/get/status/doctor');
+        
+        // Assuming the data structure has a property like "user" containing user information
+        console.log(res.data.data);
+        setUserData(res.data.data);
+        
+        setLoading(false); // Set loading to false once data is fetched
+      } catch (error) {
+        setError(error.message);
+        setLoading(false); // Set loading to false in case of an error
+      }
+    };
+
+    fetchData();
+  }, []);
+ 
 	const [showPassword, setShowPassword] = useState(false);
-	const user = props.userDetails;
-	// const {isAuthenticated,setisAuthenticated,loading,setLoading}=useContext(Context);
-	// console.log(user);
+	const doctorData = userData
+	
+	// console.log(doctorData);
 	const [auth, setIsauth] = useState(false);
 	const [formData, setFormData] = useState({
 		name: '',
-		password: '',
+		registrationID: '',
 	});
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,8 +46,8 @@ function Login(props) {
 		e.preventDefault();
 		// setLoading(true);
 		// console.log(formData.password);
-		console.log(user.name);
-		if (formData.name === user.username && formData.password === user.password) {
+		// console.log(doctor.name);
+		if (formData.name === doctorData[0].name ||formData.name === doctorData[1].name ||formData.name === doctorData[2].name ||formData.name === doctorData[3].name  && formData.registrationID === doctor[0].registrationID||formData.registrationID === doctor[0].registrationID||formData.registrationID === doctor[1].registrationID||formData.registrationID === doctor[2].registrationID ||formData.registrationID === doctor[3].registrationID) {
 			toast.success("Signed In");
 			setIsauth(true);
 		}
@@ -33,7 +56,7 @@ function Login(props) {
 			toast.error("Invalid Credentials");
 		}
 	}
-	if (auth) return <Navigate to={'/home'} />
+	if (auth) return <Navigate to={'/doctorWork'} />
 
 	return (
 		<>
@@ -42,7 +65,7 @@ function Login(props) {
         </div>
 			<div className="signup-container " >
 				<form className="signup-form" onSubmit={handleSubmit}>
-					<h2 style={{ color: 'white', textAlign:'center'}}>Sign In</h2>
+					<h2 style={{ color: 'white', textAlign:'center'}}>Log In</h2>
 					<div className="form-group">
 						<div className='paswrd_field'>
 						<label1 htmlFor="Username">Username</label1>
@@ -58,16 +81,16 @@ function Login(props) {
 						
 					</div>
 					<div className="form-group ">
-						<label1 htmlFor="password">Password</label1>
+						<label1 htmlFor="password">Registration ID</label1>
 						<div className='password_field'>
 							<div className='passwrd_field'><input
 							
 								type={
 									showPassword ? "text" : "password"
 								}
-								id="password"
-								name="password"
-								value={formData.password}
+								id="registrationID"
+								name="registrationID"
+								value={formData.registrationID}
 								onChange={handleChange}
 								required
 							/></div>
@@ -89,4 +112,4 @@ function Login(props) {
 	)
 }
 
-export default Login
+export default DoctorPortol

@@ -23,14 +23,14 @@ function DoctorsDetails(props) {
                 </div>
                 <div className="card-body">
                     <div className="row">
-                        <h3>{props.name}</h3>
+                        <h3>Doctor's Name:-{props.name}</h3>
                     </div>
                     <div className="row">
 
-                        <h3 style={{ color: h1Color }}>{isAvailable}</h3>
+                        <h3 style={{ color: h1Color }}>Current Status:-{isAvailable}</h3>
                     </div>
                     <div className="row">
-                        <h3>{props.registration_ID}</h3>
+                        <h3>Registration ID:-{props.registration_ID}</h3>
                     </div>
                 {status?"":<div className="row">
                         <h3>Availbale in:-{props.available} minutes</h3>
@@ -41,7 +41,7 @@ function DoctorsDetails(props) {
                         <h3>{props.hospital}</h3>
                     </div>
                     {status?'':<div style={{ backgroundColor: '#ADD8E6' }} className="row">
-                        <h3>{props.reason}</h3>
+                        <h3>Reason for Unavailability:-{props.reason}</h3>
                     </div>}
                     
                 </div>
