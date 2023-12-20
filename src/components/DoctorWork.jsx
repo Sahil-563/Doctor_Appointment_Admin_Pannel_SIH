@@ -50,8 +50,8 @@ function DoctorWork() {
     <>
       <div className='doctorStatus'>
         {/* <h2>Your Status :- <span style={{color:'red'}}>{data.data[0].status?'Available':'Not Available'}</span></h2> */}
-        <h2>Location :- Government Hospital, Mysuru</h2>
-        <h2>Department :- General </h2>
+        <h2 style={{color:'black'}}>Location :- Government Hospital, Mysuru</h2>
+        <h2 style={{color:'black'}}>Department :- General </h2>
       </div>
       <div className='btn'>
         <button onClick={fetchData}>Your Appointments</button>

@@ -1,16 +1,6 @@
-.intro-img{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  object-fit: cover;
-}
+
 .beautiful-form-container {
-    position: absolute;
-    top: 0;
-    
-    left: 40%;
+    position: relative;
     max-width: 400px;
     margin: auto;
     margin-top: 20px;

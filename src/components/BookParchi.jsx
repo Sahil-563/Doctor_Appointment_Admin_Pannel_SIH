@@ -2,7 +2,9 @@ import React from 'react'
 import './BookParchiStyles.css'
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import heroImg from '../assets/hero_img.jpg'
 function BookParchi() {
   const [locations, setLocations] = useState([]);
@@ -40,17 +42,39 @@ function BookParchi() {
       const { data } = await axios.post(`https://digitilize-pragun.onrender.com/predict/deptt`, symptomList, {
 
       })
+      
       setResponse(data.Department)
-      // setFormData.department(data.Department)
-      // console.log(data);
-
-    }
-
+      
+      
+     }
     catch (error) {
+      console.log(error);
       console.error('Error:', error);
-
-
     }
+    try {
+      const {data } = await axios.post(`https://digitilize-pragun.onrender.com/get_home_care_suggestions`, symptomList, {
+
+      })
+     
+      const homeCareSuggestions = data.home_care_suggestions;
+
+    if (homeCareSuggestions) {
+      Object.keys(homeCareSuggestions).forEach((property) => {
+        const suggestion = homeCareSuggestions[property];
+        toast.success(`${property}: ${suggestion}`, {
+          autoClose: 6000, // Set autoClose to 6000 milliseconds (6 seconds)
+        });
+      });
+    } else {
+      toast.error('No home care suggestions available', {
+        autoClose: 16000, // Set autoClose to 6000 milliseconds (6 seconds)
+      });
+    }
+
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
   }
   useEffect(() => {
     // Update the department field in formData when the response changes
@@ -207,13 +231,10 @@ function BookParchi() {
   }
 
   return (
+    
     <>
-      <div className='maskk'>
-        <img className='intro-img' src={heroImg} alt="" />
-      </div>
-
-
-      <div className="beautiful-form-container">
+    <ToastContainer autoClose={6000} position="top-center" />
+     <div className="beautiful-form-container">
         <h1 style={{ textAlign: 'center', backgroundColor: 'green', marginBottom: '20px' }}>Book Appointment</h1>
         <form >
           <div className="form-group">

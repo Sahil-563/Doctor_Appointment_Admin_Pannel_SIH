@@ -30,7 +30,7 @@ function DoctorsDetails(props) {
                         <h3 style={{ color: h1Color }}>Current Status:-{isAvailable}</h3>
                     </div>
                     <div className="row">
-                        <h3>Registration ID:-{props.registration_ID}</h3>
+                        <h3 >Registration ID:-{props.registration_ID}</h3>
                     </div>
                 {status?"":<div className="row">
                         <h3>Availbale in:-{props.available} minutes</h3>

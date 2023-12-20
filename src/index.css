@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 body{
-  background-color: black;
+  background-color: white;
 }
 h1,
 h2,
 h4,
 p,
 a {
-    color: whitesmoke;
+    color: white;
     text-decoration: none;
 }

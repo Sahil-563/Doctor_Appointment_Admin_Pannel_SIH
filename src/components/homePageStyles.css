@@ -1,35 +1,51 @@
-.intro-img{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
-  }
-  /* .maskk::after {
-    content: "";
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #000000;
-    opacity: 0.4;
-  } */
-  .content {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%; 
-    text-align: center;
-}
-.navbar{
-    display: flex;
-    justify-content: space-around;
+/* homePageStyles.css */
+
+/* ... (previous styles) */
+
+.hro {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }
 
+.maskk {
+  width: 80%; /* Adjust the width as needed */
+  opacity: 0.8;
+}
 
+.intro-img {
+  width: 100%;
+  height: auto;
+}
 
-.nav-links>li {
-    list-style: none;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.card {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: auto;
+  text-align: center;
+}
+
+.cta-btn:hover {
+  background-color: darkgreen;
 }

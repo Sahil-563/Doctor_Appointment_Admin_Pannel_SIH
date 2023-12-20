@@ -1,26 +1,18 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import DoctorsDetails from '../components/DoctorsDetails'
-import heroImg from '../assets/hero_img.jpg'
-import './GetDoctorsDetailsStyles.css'
+import DoctorsDetails from '../components/DoctorsDetails';
+import heroImg from '../assets/hero_img.jpg';
+import './GetDoctorsDetailsStyles.css';
+
 function GetDoctorsDetail() {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState(0);
-  useEffect(() => {
-    axios.get("https://digitilize-pragun.onrender.com/get/status/doctor").then((res) => {
-      setData(res.data.data);
-    })
-      .catch((error) => {
-        toast.error('Internal Server Error');
-      });
-  }, [])
+
   useEffect(() => {
     const fetchData = () => {
-      axios.get("https://digitilize-pragun.onrender.com/get/status/doctor", {})
+      axios.get("https://digitilize-pragun.onrender.com/get/status/doctor")
         .then((res) => {
-          console.log(res.data.data);
           setData(res.data.data);
         })
         .catch((error) => {
@@ -31,45 +23,34 @@ function GetDoctorsDetail() {
     const intervalId = setInterval(() => {
       setStatus((prevStatus) => prevStatus + 1);
       fetchData();
-    }, 4000);
-
+    }, 2000);
 
     return () => clearInterval(intervalId);
   }, []);
+
   return (
     <>
-      <div className='hero'>
-        {/* <div className='mask'>
-          <img className='intro-img' src={heroImg} alt="" />
-        </div> */}
-
-        <div className='DocterDetails'>
-          {data.map((data, indx) => {
-            return (
-              <DoctorsDetails
-                key={indx}
-                name={data.name}
-                status={data.status}
-                registration_ID={data.registration_id}
-                available={data.available_in}
-                reason={data.reason}
-                hospital={data.hospital}
-              />
-            )
-
-          })}
-        </div>
+    <h1 style={{color:'black',textAlign:'center'}}>Doctor Details</h1>
+    <div className='hero'>
+      <div className='DocterDetails'>
+        {data.map((doctor, indx) => (
+          <div key={indx} className='doctor-card'>
+            <img className='doctor-img' src={heroImg} alt={`Doctor ${indx + 1}`} />
+            <div className='doctor-info'>
+              <h2>{doctor.name}</h2>
+              <p>Status: {doctor.status}</p>
+              <p>Registration ID: {doctor.registration_id}</p>
+              <p>Available In: {doctor.available_in}</p>
+              <p>Reason: {doctor.reason}</p>
+              <p>Hospital: {doctor.hospital}</p>
+            </div>
+          </div>
+        ))}
       </div>
-
-
-
-
-
-
+    </div>
     </>
-
-  )
-
+    
+  );
 }
 
-export default GetDoctorsDetail
+export default GetDoctorsDetail;

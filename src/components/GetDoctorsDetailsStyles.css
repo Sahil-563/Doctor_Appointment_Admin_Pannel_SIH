@@ -1,29 +1,51 @@
-@media screen and (max-width: 480px) {
-    .DocterDetails{
-        flex-wrap: wrap;
-    }
+/* GetDoctorsDetailsStyles.css */
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: black; /* Set background color to black */
+}
+
+.DocterDetails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.doctor-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Adjust shadow color */
+  transition: transform 0.3s ease-in-out;
+  background-color: white; /* Set card background color to white */
+  color: black; /* Set text color to black */
+
+  &:hover {
+    transform: scale(1.05);
   }
-  .intro-img{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
-  }
-  .mask::after {
-    content: "";
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 50;
-    left: 0;
-    background-color: #000000;
-    opacity: 0.6;
-  }
-  .DocterDetails{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
- 
+}
+
+.doctor-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.doctor-info {
+  padding: 10px;
+}
+
+.doctor-info h2 {
+  margin: 0;
+  color: #333;
+}
+
+.doctor-info p {
+  margin: 5px 0;
+  color: #555;
+}

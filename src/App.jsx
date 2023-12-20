@@ -14,7 +14,7 @@ import GtDoctorsDetails from './components/GetDoctorsDetail'
 import BookParchi from './components/BookParchi'
 import DoctorPortol from './components/DoctorPortol';
 import DoctorWork from './components/DoctorWork';
-
+import Banner from './components/banner'
 function App() {
   
   const[Username,setUsername] = useState(null);
@@ -47,11 +47,12 @@ setInterval
   
     return (
       <>
+      <Banner/>
         <Router>
           <Routes>
             
-            <Route path="/" element={<SignIn userDetails={userDetails}/>}/>
-            <Route path="/home" element={<Home userDetails={userDetails} />}/>
+            {/* <Route path="/" element={<SignIn userDetails={userDetails}/>}/> */}
+            <Route path="/" element={<Home userDetails={userDetails} />}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="getDoctorsDetails" element={<GtDoctorsDetails />}/>
             <Route path="/bookparchi" element={<BookParchi />}/>

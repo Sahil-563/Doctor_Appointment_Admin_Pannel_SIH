@@ -3,7 +3,7 @@ import { useState ,useEffect} from 'react'
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
-import './signInUpStyles.css';
+
 import heroimg from '../assets/hero_img.jpg'
 
 function DoctorPortol() {
@@ -61,7 +61,7 @@ function DoctorPortol() {
 	return (
 		<>
 		<div className='mask'>
-                    <img className='intro-img'src={heroimg} alt="" />
+            <img className='intro-img'src={heroimg} alt="" />
         </div>
 			<div className="signup-container " >
 				<form className="signup-form" onSubmit={handleSubmit}>
